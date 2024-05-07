@@ -12,6 +12,12 @@ type Day struct {
 	index int
 }
 
+// months stores all months of the year
+var months []Month
+
+// days stores all days of the week
+var days []Day
+
 // Shift shifts Day k times
 // for example: day = jome, k = 1 -> day = shanbe
 // for example: day = jome, k = -1 -> day = 5shanbe
@@ -20,7 +26,6 @@ func (d *Day) Shift(k int) {
 	if index < 0 {
 		index = 7 + index
 	}
-	fmt.Print()
 
 	for i, day := range days {
 		if i == index {
@@ -52,12 +57,6 @@ func (d Date) ConvertToNumber() int {
 
 	return days
 }
-
-// months stores all months of the year
-var months []Month
-
-// days stores all days of the week
-var days []Day
 
 func main() {
 	// adding all months of the year
