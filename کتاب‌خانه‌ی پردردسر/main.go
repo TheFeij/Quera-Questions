@@ -15,7 +15,7 @@ type Book struct {
 // NewBook returns a new book instance with the given title
 func NewBook(title string) *Book {
 	return &Book{
-		title:      title,
+		title:      strings.ToLower(title),
 		borrower:   "",
 		isBorrowed: false,
 	}
@@ -111,7 +111,7 @@ func (library *Library) BorrowBook(bookName, personName string) string {
 	}
 
 	if book.IsBorrowed() {
-		return "The book is already borrowed by "
+		return "The book is already borrowed by " + book.borrower
 	}
 
 	if ok := book.Borrow(personName); !ok {
