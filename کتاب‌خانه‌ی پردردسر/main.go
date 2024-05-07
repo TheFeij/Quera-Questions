@@ -22,41 +22,41 @@ func NewBook(title string) *Book {
 }
 
 // Title is getter for the field title
-func (b Book) Title() string {
+func (b *Book) Title() string {
 	return b.title
 }
 
 // Borrower is getter for the field borrower
-func (b Book) Borrower() string {
+func (b *Book) Borrower() string {
 	return b.borrower
 }
 
 // IsBorrowed is getter for the field isBorrowed
-func (b Book) IsBorrowed() bool {
+func (b *Book) IsBorrowed() bool {
 	return b.isBorrowed
 }
 
 // Borrow borrows the book to the given borrower
 // returns false if the book is already borrowed
-func (book *Book) Borrow(borrower string) bool {
-	if book.isBorrowed {
+func (b *Book) Borrow(borrower string) bool {
+	if b.isBorrowed {
 		return false
 	}
 
-	book.isBorrowed = true
-	book.borrower = borrower
+	b.isBorrowed = true
+	b.borrower = borrower
 	return true
 }
 
 // Return returns the book
 // returns false if the book had not been borrowed
-func (book *Book) Return() bool {
-	if !book.isBorrowed {
+func (b *Book) Return() bool {
+	if !b.isBorrowed {
 		return false
 	}
 
-	book.isBorrowed = false
-	book.borrower = ""
+	b.isBorrowed = false
+	b.borrower = ""
 	return true
 }
 
